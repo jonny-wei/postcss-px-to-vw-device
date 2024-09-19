@@ -1,0 +1,79 @@
+{
+  "name": "postcss-px-to-vw-device",
+  "version": "1.1.0",
+  "description": "A postcss plugin that aims to convert px to vw to adapt to different devices",
+  "scripts": {
+    "build": "npm run clean && rollup --config rollup.config.ts --configPlugin typescript",
+    "prepublishOnly": "npm run build",
+    "prepublishPack": "npm run prepublishOnly && npm pack",
+    "test": "jest test",
+    "clean": "rimraf lib",
+    "release": "standard-version",
+    "publish:release": "npm run prepublishOnly && npm run release && npm publish"
+  },
+  "types": "./lib/index.d.ts",
+  "main": "./lib/index.cjs",
+  "module": "./lib/index.mjs",
+  "files": [
+    "lib",
+    "es",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "require": "./lib/index.cjs",
+      "import": "./lib/index.mjs"
+    }
+  },
+  "keywords": [
+    "postcss",
+    "postcss-plugin",
+    "postcss-px-to-viewport",
+    "postcss-px-to-rem",
+    "vw",
+    "rem"
+  ],
+  "homepage": "https://gitee.com/edgeros/postcss-px-to-vw-device",
+  "author": "EdgerOS Team",
+  "contributors": [],
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/edgeros/postcss-px-to-vw-device"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^26.0.1",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^22.1.0",
+    "husky": "^9.1.4",
+    "jest": "^29.7.0",
+    "lint-staged": "^15.2.8",
+    "postcss": "^8.4.41",
+    "rimraf": "^6.0.1",
+    "rollup": "^4.20.0",
+    "rollup-plugin-dts": "^6.1.1",
+    "standard-version": "^9.5.0",
+    "ts-jest": "^29.2.4",
+    "tslib": "^2.6.3",
+    "typescript": "^5.5.4"
+  },
+  "peerDependencies": {
+    "postcss": ">=8.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run build && npm test"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.ts": [
+      "prettier --write",
+      "git add"
+    ]
+  }
+}
