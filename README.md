@@ -83,18 +83,12 @@
 
 ```
 npm install postcss-px-to-vw-device --save-dev
-
-// 仅内部开发者
-npm install git+https://gitee.com/edgeros/postcss-px-to-vw-device.git --save-dev
 ```
 
 或者使用 pnpm 进行安装
 
 ```
 pnpm add postcss-px-to-vw-device -D 
-
-// 仅内部开发者
-pnpm add git+https://gitee.com/edgeros/postcss-px-to-vw-device.git -D
 ```
 
 ### 配置参数
